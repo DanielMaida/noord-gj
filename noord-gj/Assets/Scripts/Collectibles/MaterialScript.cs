@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MaterialType
+{
+    Metal = 0,
+    Wood = 1,
+    Clay = 2,
+    Sugar = 3
+}
+
 public class MaterialScript : MonoBehaviour {
     
     public float BlinkRepetitions;
+    public MaterialType MyMaterialType;
 
     private CircleCollider2D MyCircleCollider;
     private SpriteRenderer MySpriteRenderer;
@@ -19,6 +28,8 @@ public class MaterialScript : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            MyCircleCollider.enabled = false;
+            other.GetComponent<PlayerScript>().IncreaseMaterial(MyMaterialType);
             StartCoroutine(PickupCoroutine());
         }
     }
