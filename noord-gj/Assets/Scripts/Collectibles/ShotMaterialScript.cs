@@ -6,17 +6,15 @@ public class ShotMaterialScript : MonoBehaviour {
 
     public MaterialType MyMaterialType;
     public Vector2 ShootDirection;
+    public float Force;
 
     private Rigidbody2D MyRigidBody2D;
     
 	// Use this for initialization
 	void Start () {
         MyRigidBody2D = GetComponent<Rigidbody2D>();
-        MyRigidBody2D.AddForce(ShootDirection * 3, ForceMode2D.Impulse);
+        MyRigidBody2D.AddForce(ShootDirection * Force, ForceMode2D.Impulse);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+ 
 }
